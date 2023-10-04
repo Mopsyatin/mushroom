@@ -43,63 +43,83 @@ def Mushroom(image_path):
 
     if class_name == class_names[0]:
         text = shampinion
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[1]:
         text = lisichka
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[2]: 
         text = opyata
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[3]:
         text = gruzd
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[4]:
         text = borowik
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[5]:
         text = podberez
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[6]:
         text = podocin
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[7]:
         text = ruzhik
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[8]:
         text = suroezka
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[9]:
         text = maslenok
+        eat = 'СЪЕДОБНЫЙ'
 
     elif class_name == class_names[10]:
         text = muhomor
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[11]:
         text = poganka
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[12]:
         text = satana
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[13]:
         text = lepiota
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[14]:
         text = galerina
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[15]:
         text = pautinic
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[16]:
         text = zhelchi
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[17]:
         text = lozhlisichka
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[18]:
         text = lozhopenek
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
     elif class_name == class_names[19]:
         text = mizena
+        eat = 'НЕ СЪЕДОБНЫЙ'
 
 
     # Print prediction and confidence score
@@ -118,9 +138,9 @@ def Mushroom(image_path):
 — нельзя забывать, что некоторые съедобные грибы (опенок осенний, сыроежка) имеют ядовитых двойников.
           
 - наше приложение точно не на сто  процентов и мы не несем ни какой ответственности за предоставленную информацию''')
-    print('===========')
-    print('ВАШ ГРИБ:')
-    print('===========')
+    print('=======================')
+    print('ВАШ ГРИБ:', eat)
+    print('=======================')
     print("============================================================================================================")
     print("Вид:", class_name[2:], end="")
     print("Вероятность совпадения:", confidence_score)
