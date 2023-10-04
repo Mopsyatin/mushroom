@@ -11,7 +11,7 @@ def Mushroom(image_path):
     model = load_model("keras_model.h5", compile=False)
 
     # Load the labels
-    class_names = open("labels.txt", "r").readlines()
+    class_names = open("labels.txt", "r", encoding="utf8").readlines()
 
     # Create the array of the right shape to feed into the keras model
     # The 'length' or number of images you can put into the array is
@@ -19,7 +19,7 @@ def Mushroom(image_path):
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
     # Replace this with the path to your image
-    image = Image.open("image_path").convert("RGB")
+    image = Image.open(image_path).convert("RGB")
 
     #resizing the image to be at least 224x224 and then cropping from the center
     size = (224, 224)
@@ -40,68 +40,73 @@ def Mushroom(image_path):
     class_name = class_names[index]
     confidence_score = prediction[0][index]
 
-    if class_name == "шампиньон":
+
+    if class_name == class_names[0]:
         text = shampinion
 
-    elif class_name == "лисичка обыкновенная":
+    elif class_name == class_names[1]:
         text = lisichka
 
-    elif class_name == "опята": 
+    elif class_name == class_names[2]: 
         text = opyata
 
-    elif class_name == "груздь":
+    elif class_name == class_names[3]:
         text = gruzd
 
-    elif class_name == "белый гриб (боровик)":
+    elif class_name == class_names[4]:
         text = borowik
 
-    elif class_name == "подберёзовик":
+    elif class_name == class_names[5]:
         text = podberez
 
-    elif class_name == "подосиновик":
+    elif class_name == class_names[6]:
         text = podocin
 
-    elif class_name == "рыжик":
+    elif class_name == class_names[7]:
         text = ruzhik
 
-    elif class_name == "сыроежка":
+    elif class_name == class_names[8]:
         text = suroezka
 
-    elif class_name == "маслёнок":
+    elif class_name == class_names[9]:
         text = maslenok
 
-    elif class_name == "мухомор":
+    elif class_name == class_names[10]:
         text = muhomor
 
-    elif class_name == "бледная поганка":
+    elif class_name == class_names[11]:
         text = poganka
 
-    elif class_name == "сатанинский гриб":
+    elif class_name == class_names[12]:
         text = satana
 
-    elif class_name == "лепиота коричнево-красная":
+    elif class_name == class_names[13]:
         text = lepiota
-    elif class_name == "галерина окаймлённая":
+
+    elif class_name == class_names[14]:
         text = galerina
 
-    elif class_name == "паутинник красивейший":
+    elif class_name == class_names[15]:
         text = pautinic
 
-    elif class_name == "желчный гриб":
+    elif class_name == class_names[16]:
         text = zhelchi
 
-    elif class_name == "ложная лисичка":
+    elif class_name == class_names[17]:
         text = lozhlisichka
 
-    elif class_name == "ложный опёнок":
+    elif class_name == class_names[18]:
         text = lozhopenek
 
-    elif class_name == "мицена":
+    elif class_name == class_names[19]:
         text = mizena
 
 
     # Print prediction and confidence score
-    print('''Памятка:
+    print('===========')
+    print('ПАМЯТКА!!!:')
+    print('===========')
+    print('''
 - собирать грибы следует вдали от дорог, магистралей, вне населенных мест, в экологически чистых районах. Собирать грибы лучше с восходом солнца, по росе;
 
 — для сохранения свежести грибов необходимо собирать их в плетеную ивовую корзину. Не рекомендуется собирать в ведра, полиэтиленовые пакеты или мешки, так как в них нет доступа воздуха. Кроме того, в полиэтиленовых емкостях повышается температура, что приводит к порче грибов;
@@ -113,8 +118,13 @@ def Mushroom(image_path):
 — нельзя забывать, что некоторые съедобные грибы (опенок осенний, сыроежка) имеют ядовитых двойников.
           
 - наше приложение точно не на сто  процентов и мы не несем ни какой ответственности за предоставленную информацию''')
-    print("======================================================================================================================================================================================================================================================================================")
-    print("Class:", class_name[2:], end="")
-    print("Confidence Score:", confidence_score)
-    print("======================================================================================================================================================================================================================================================================================")
+    print('===========')
+    print('ВАШ ГРИБ:')
+    print('===========')
+    print("============================================================================================================")
+    print("Вид:", class_name[2:], end="")
+    print("Вероятность совпадения:", confidence_score)
+    print("============================================================================================================")
+    print('ЭТО ИНТЕРЕСНО!')
+    print('==============')
     print(text)
