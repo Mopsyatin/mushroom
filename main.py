@@ -1,6 +1,7 @@
 from keras.models import load_model  # TensorFlow is required for Keras to work
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
+import colorama
 from names import shampinion, lisichka, opyata, gruzd,borowik, podberez, podocin, ruzhik, satana,suroezka,maslenok,mizena,muhomor,pautinic,poganka,lepiota,lozhlisichka,lozhopenek,galerina,zhelchi
 
 def Mushroom(image_path):
@@ -123,10 +124,11 @@ def Mushroom(image_path):
 
 
     # Print prediction and confidence score
-    print('===========')
-    print('ПАМЯТКА!!!:')
-    print('===========')
-    print('''
+    print('=============')
+    print(colorama.Back.RED, 'ПАМЯТКА!!!:', colorama.Style.RESET_ALL)
+    print('=============')
+    print(colorama.Fore.BLACK)
+    print(colorama.Back.WHITE + '''
 - собирать грибы следует вдали от дорог, магистралей, вне населенных мест, в экологически чистых районах. Собирать грибы лучше с восходом солнца, по росе;
 
 — для сохранения свежести грибов необходимо собирать их в плетеную ивовую корзину. Не рекомендуется собирать в ведра, полиэтиленовые пакеты или мешки, так как в них нет доступа воздуха. Кроме того, в полиэтиленовых емкостях повышается температура, что приводит к порче грибов;
@@ -138,13 +140,30 @@ def Mushroom(image_path):
 — нельзя забывать, что некоторые съедобные грибы (опенок осенний, сыроежка) имеют ядовитых двойников.
           
 - наше приложение точно не на сто  процентов и мы не несем ни какой ответственности за предоставленную информацию''')
-    print('=======================')
-    print('ВАШ ГРИБ:', eat)
-    print('=======================')
-    print("============================================================================================================")
-    print("Вид:", class_name[2:], end="")
-    print("Вероятность совпадения:", confidence_score)
-    print("============================================================================================================")
-    print('ЭТО ИНТЕРЕСНО!')
-    print('==============')
-    print(text)
+    print(colorama.Style.RESET_ALL)
+    if eat == 'НЕ СЪЕДОБНЫЙ':
+        print("=====================")
+        print(colorama.Back.RED, 'ВАШ ГРИБ:', eat, colorama.Style.RESET_ALL)
+        print("=====================")
+        print("============================================================================================================")
+        print(colorama.Back.WHITE, "Вид:", colorama.Back.RED, class_name[2:], end="", )
+        print(colorama.Style.RESET_ALL)
+        print(colorama.Back.WHITE, "Вероятность совпадения:", colorama.Back.RED, confidence_score, colorama.Style.RESET_ALL)
+        print("============================================================================================================")
+        print('================')
+        print(colorama.Back.CYAN, 'ЭТО ИНТЕРЕСНО!', colorama.Style.RESET_ALL)
+        print('================')
+        print(colorama.Back.RED, text, colorama.Style.RESET_ALL)
+    elif eat == 'СЪЕДОБНЫЙ':
+        print("=====================")
+        print(colorama.Back.LIGHTGREEN_EX, 'ВАШ ГРИБ:', eat, colorama.Style.RESET_ALL)
+        print("=====================")
+        print("============================================================================================================")
+        print(colorama.Back.WHITE, "Вид:", colorama.Back.LIGHTGREEN_EX, class_name[2:], end="", )
+        print(colorama.Style.RESET_ALL)
+        print(colorama.Back.WHITE, "Вероятность совпадения:", colorama.Back.LIGHTGREEN_EX, confidence_score, colorama.Style.RESET_ALL)
+        print("============================================================================================================")
+        print('================')
+        print(colorama.Back.CYAN, 'ЭТО ИНТЕРЕСНО!', colorama.Style.RESET_ALL)
+        print('================')
+        print(colorama.Back.LIGHTGREEN_EX, text, colorama.Style.RESET_ALL)
